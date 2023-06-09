@@ -9,6 +9,12 @@ class MyNode(Node):
     def __init__(self):
         super().__init__("py_test")
         self.get_logger().info("Hello ROOT")
+        self.create_timer(0.5, self.timer_callback) #for displaying the given sentence for everty 0.5 seconds
+        self.counter = 0
+
+    def timer_callback(self):
+        self.counter +=1
+        self.get_logger().info("Hello Chandu" + str(self.counter))
 
 def main(args = None):
     rclpy.init(args=args) #initializing ros2 communications
